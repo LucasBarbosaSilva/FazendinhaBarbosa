@@ -33,3 +33,7 @@ A ideia é aplicar os seguintes padrões de projeto:
 - Factory Method: responsável por criar novos animais.
 - Strategy pattern: qual método vou utilizar para cuidar das plantas ou cuidar dos animais.
 - Command e Memento: ações de desfazer e visualizar o histórico.
+
+# Atualização - 11/11
+Design inicial do projeto:
+![Untitled](readme/design.png)
