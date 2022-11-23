@@ -34,6 +34,11 @@ A ideia é aplicar os seguintes padrões de projeto:
 - Strategy pattern: qual método vou utilizar para cuidar das plantas ou cuidar dos animais.
 - Command e Memento: ações de desfazer e visualizar o histórico.
 
-# Atualização - 11/11
-Design inicial do projeto:
-![Untitled](readme/design.png)
+# Atualização - 22/11
+### Aprimoramentos no desing do projeto:
+![Untitled](readme/Desktop1.png)
+![Untitled](readme/Desktop3.png)
+![Untitled](readme/Desktop4.png)
+![Untitled](readme/Desktop5.png)
+### Diagrama UML:
+![Untitled](readme/UML.png)
