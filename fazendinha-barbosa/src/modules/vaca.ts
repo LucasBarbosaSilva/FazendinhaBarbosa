@@ -1,10 +1,10 @@
 import { Animal } from "./animal";
 
-class Vaca extends Animal{
+export class Vaca extends Animal{
     private _produzLeite: boolean;
 
-    constructor(nome: string, raca: string, imagem: string, peso: number, numero_patas: number, preco: number, produzLeite: boolean){
-        super({nome, raca, imagem, peso, numero_patas, preco});
+    constructor(nome: string, raca: string, imagem: string, peso: number, numero_patas: number, preco: number, produzLeite: boolean, status?:"Saudavel"|"Doente"){
+        super(nome, imagem, numero_patas,peso, preco, raca, status);        
         this._produzLeite = produzLeite;
     }
 

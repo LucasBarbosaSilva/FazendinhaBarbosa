@@ -1,12 +1,14 @@
 import Image from 'next/image';
 import styles from './styles.module.css'
-
-function ImageAnimal () {
+interface ImageAnimalProps {
+  imagem: string
+}
+function ImageAnimal ({imagem}:ImageAnimalProps) {
   return(
     <div className={styles.imagem_animal}>
       <Image
-        src={"/animais/bichos/galinha.png"}
-        alt="imagem habbitat"
+        src={imagem}
+        alt="imagem animal"
         fill
         style={{objectFit: 'cover'}}
       />

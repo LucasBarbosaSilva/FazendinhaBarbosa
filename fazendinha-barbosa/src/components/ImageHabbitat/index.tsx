@@ -1,11 +1,13 @@
 import Image from 'next/image';
 import styles from './styles.module.css'
-
-function ImageHabbitat () {
+interface ImageHabbitatProps {
+  imagem: string
+}
+function ImageHabbitat ({imagem}:ImageHabbitatProps) {
   return(
     <div className={styles.imagem_habbitat}>
         <Image
-          src={"/animais/locais/galinheiro.jpg"}
+          src={imagem}
           alt="imagem habbitat"
           fill
           style={{objectFit: 'cover'}}
