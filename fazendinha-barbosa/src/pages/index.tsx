@@ -1,5 +1,6 @@
 import { Habbitat } from '../components/Habbitat'
 import { Header } from '../components/Header/Header'
+import { Plantacao } from '../components/Plantacao'
 import styles from '../styles/pages/Home.module.css'
 
 export default function Home() {
@@ -11,7 +12,7 @@ export default function Home() {
           <Habbitat/>
         </div>
         <div className={styles.container_plantas}>
-          
+          <Plantacao/>
         </div>
       </div>
     </div>
