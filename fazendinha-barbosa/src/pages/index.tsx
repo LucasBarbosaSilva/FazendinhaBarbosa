@@ -10,6 +10,8 @@ import { Cavalo } from '../modules/cavalo'
 
 export default function Home() {
   const [habbitats, setHabbitats] = useState<AnimalHabbitat[]>([]);
+  // const [plantacoes, setplantacoes] = useState<Plantacao[]>([]);
+  
   useEffect(() => {
     const galinha1 = new Galinha("Tia Cocó", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
     const galinha2 = new Galinha("Maria Chiquinha", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
