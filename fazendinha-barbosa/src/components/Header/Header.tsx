@@ -8,8 +8,7 @@ function Header () {
         src="/minifazendinha-cover.jpg"
         alt="" 
         fill
-        objectFit='cover'
-        objectPosition='top'
+        style={{objectFit: 'cover', objectPosition: 'top'}}
       />
     </div>
   );
