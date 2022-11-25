@@ -11,9 +11,20 @@
 }
 
 .container_plantacao{
+  height: 100%;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-image: url("/plantas/plantas.png");
+  background-position: bottom left;
+  background-size: contain;
+  background-repeat: repeat-x;
 }
+
+.image{
+  height: 2rem;
+  width: 2rem;
+  background-image: url("/plantas/plantas.png");
+}
+
+
+
 
