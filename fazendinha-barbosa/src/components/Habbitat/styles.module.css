@@ -1,0 +1,35 @@
+.container{
+  background-color: #F5F4F4;
+  width: 100%;
+  height: 5rem;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  border-radius: 0.625rem;
+}
+
+.imagem_habbitat{
+  position: relative;
+  width: 5rem;
+  height: 5rem;
+
+  margin-right: 1.375rem;
+  padding-bottom: -1rem;
+}
+
+.imagem_animal{
+  position: relative;
+  width: 3.125rem;
+  height: 3.125rem;
+
+  margin-right: 1.375rem;
+}
+
+.botao_plus{
+  position: relative;
+  width: 1.625rem;
+  height: 1.625rem;
+}
+
