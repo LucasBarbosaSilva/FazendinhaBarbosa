@@ -1,11 +1,11 @@
-import { Animal } from "./animal";
+import {Animal} from "./animal"
 
 class Cavalo extends Animal{
     private _adestrado: boolean;
     private _velocidade: number;
 
     constructor(nome: string, raca: string, imagem: string, peso: number, numero_patas: number, preco: number, adestrado: boolean, velocidade: number){
-        super(nome, raca, imagem, peso, numero_patas, preco);
+        super({nome, raca, imagem, peso, numero_patas, preco});
         this._adestrado = adestrado;
         this._velocidade = velocidade;
     }

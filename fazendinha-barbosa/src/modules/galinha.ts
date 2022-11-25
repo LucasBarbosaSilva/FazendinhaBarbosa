@@ -4,7 +4,7 @@ class Galinha extends Animal{
     private _pondoOvos: boolean;
 
     constructor(nome: string, raca: string, imagem: string, peso: number, numero_patas: number, preco: number, pondoOvos: boolean){
-        super(nome, raca, imagem, peso, numero_patas, preco);
+        super({nome, raca, imagem, peso, numero_patas, preco});
         this._pondoOvos = pondoOvos;
     }
 

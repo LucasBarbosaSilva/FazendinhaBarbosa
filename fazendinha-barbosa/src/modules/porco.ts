@@ -4,7 +4,7 @@ class Porco extends Animal{
     private _prontoProAbate: boolean;
 
     constructor(nome: string, raca: string, imagem: string, peso: number, numero_patas: number, preco: number, prontoProAbate: boolean){
-        super(nome, raca, imagem, peso, numero_patas, preco);
+        super({nome, raca, imagem, peso, numero_patas, preco});
         this._prontoProAbate = prontoProAbate;
     }
 

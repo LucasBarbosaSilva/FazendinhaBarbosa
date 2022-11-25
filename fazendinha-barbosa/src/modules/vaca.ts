@@ -4,7 +4,7 @@ class Vaca extends Animal{
     private _produzLeite: boolean;
 
     constructor(nome: string, raca: string, imagem: string, peso: number, numero_patas: number, preco: number, produzLeite: boolean){
-        super(nome, raca, imagem, peso, numero_patas, preco);
+        super({nome, raca, imagem, peso, numero_patas, preco});
         this._produzLeite = produzLeite;
     }
 
