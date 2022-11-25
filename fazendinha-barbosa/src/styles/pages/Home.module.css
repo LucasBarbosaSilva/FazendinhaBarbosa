@@ -1,0 +1,31 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container_celeiro{
+  width: 60%;
+  height: 100vh;
+
+  background-color: #fdfdfd;
+  z-index: 1;
+  margin-top: -50px;
+  border-radius: 2em;
+  /* box-shadow: #9e9e9e; */
+
+  display: flex;
+  flex-direction: row;
+
+  padding: 1em;
+}
+
+.container_animais{
+  width: 50%;
+}
+
+.container_plantas{
+  width: 50%;
+}
