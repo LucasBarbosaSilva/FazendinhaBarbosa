@@ -1,0 +1,26 @@
+.overlay{
+  background-color: rgba(126, 126, 126, 0.8);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.container{
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  max-width: 1000px;
+  height: 100%;
+  max-height: 600px;
+  padding: 2rem 3rem;
+  border-radius: 5px;
+  box-shadow: 0 0 60px rgba(0,0,0 0.05);
+  text-align: center;
+  position: relative;
+}
