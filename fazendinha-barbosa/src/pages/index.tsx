@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 import { Cavalo } from '../modules/cavalo'
 import { Plantacao } from '../components/Plantacao'
 import { GerenciarAnimaisModal } from '../components/GerenciarAnimaisModal'
+import Head from 'next/head'
 
 export default function Home() {
   const [habbitats, setHabbitats] = useState<AnimalHabbitat[]>([]);
@@ -30,6 +31,7 @@ export default function Home() {
   
   return (
     <div className={styles.container}>
+      
       <GerenciarAnimaisModal/>
       <Header/>
       <div className={styles.container_celeiro}>
