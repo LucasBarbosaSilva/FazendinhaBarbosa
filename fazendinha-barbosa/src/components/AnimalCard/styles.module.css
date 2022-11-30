@@ -1,0 +1,13 @@
+.imagem_animal{
+  position: relative;
+  width: 11.313rem;
+    
+  border-radius: 2.125rem;
+  border-color: #FF9200;
+  border-style: solid;
+  border-width: 1px;
+  
+  overflow: hidden;
+  
+  margin-top: 2rem;
+}

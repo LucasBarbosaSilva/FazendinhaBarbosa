@@ -15,9 +15,9 @@
 .container{
   background-color: rgb(255, 255, 255);
   width: 100%;
-  max-width: 1000px;
+  max-width: 1100px;
   height: 100%;
-  max-height: 550px;
+  max-height: 770px;
   padding: 2rem 3rem;
   border-radius: 5px;
   box-shadow: 0 0 60px rgba(0,0,0 0.05);
@@ -28,4 +28,22 @@
 .container h1{
   color: #E78502;
   font-family: var(--font-acme), serif;
+}
+
+.container_list_animal{
+  
+  width: 100%;
+  height: 20rem;
+
+  display: flex;
+  gap: 1rem;
+
+}
+
+.container_footer{
+  margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
