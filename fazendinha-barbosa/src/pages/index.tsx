@@ -15,7 +15,19 @@ import { PlantacaoArroz } from '../modules/Plantas/plantacaoArroz'
 import { Creator } from '../modules/creator'
 
 export default function Home() {
-  const [habbitats, setHabbitats] = useState<AnimalHabbitat[]>([]);
+  const galinheiro = new AnimalHabbitat("Galinheiro",0, [], "/animais/locais/galinheiro.jpg" );
+  const curralOvelhas = new AnimalHabbitat("Curral de Ovelhas",0, [], "/animais/locais/Ovelhas.jpg" );
+  const lagoPatos = new AnimalHabbitat("Lago dos Patos",0, [], "/animais/locais/patos.jpg" );
+  const curralVacas = new AnimalHabbitat("Curral de Vacas",0, [], "/animais/locais/vacas.jpg" );
+  const chiqueiro = new AnimalHabbitat("Chiquiero",0, [], "/animais/locais/porcos.jpg" );
+  const estabulo = new AnimalHabbitat("Estábulo",0, [], "/animais/locais/estabulo.jpg" );
+  const [habbitats, setHabbitats] = useState<AnimalHabbitat[]>([
+                                                                galinheiro, 
+                                                                curralOvelhas, 
+                                                                lagoPatos, 
+                                                                curralVacas,
+                                                                chiqueiro,
+                                                                estabulo]);
   const [plantacoes, setplantacoes] = useState<Plantacao[]>([]);
   const [isOpenModalGerenciarAnimal, setIsOpenModalGerenciarAnimal] = useState(false);
   const [isOpenModalGerenciarPlantacao, setIsOpenModalGerenciarPlantacao] = useState(false);
@@ -23,28 +35,22 @@ export default function Home() {
   const [plantacaoModal, setPlantacaoModal] = useState<Plantacao>();
   const Plantacao = new PlantacaoArroz("arroz", "/plantas/alimentos/arroz.png");
 
-  function AdicionarAnimal(index: number) {
+  function adicionarAnimal(index: number) {
     let animal = Creator.comprarAnimal(index);
-    let variavelPera = habbitats;
-
-    variavelPera.at(index)?.adicionarAnimal(animal);
-
-    setHabbitats(variavelPera);
+    const habbitatNovos = habbitats.map((habbitat, i)=> {
+      if (i === index){
+        console.log("passou")
+        habbitat.adicionarAnimal(animal)
+        console.log(habbitat.getQuantidadeAnimais())
+        return habbitat;
+      }
+      return habbitat;
+    });
+    console.log(habbitatNovos.at(index)?.getQuantidadeAnimais())
+    setHabbitats(habbitatNovos);
   }
   
-  useEffect(() => {
-    const galinha1 = new Galinha("Tia Cocó", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
-    const galinha2 = new Galinha("Maria Chiquinha", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
-    const galinha3 = new Galinha("Matilde", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
-    const animaisNoLocalGalinheiro = [galinha1, galinha2, galinha3]
-    const galinheiro = new AnimalHabbitat("Galinheiro",animaisNoLocalGalinheiro.length, animaisNoLocalGalinheiro, "/animais/locais/galinheiro.jpg" );
-    const cavalo1 = new Cavalo("Pé de Pano", "pura", "/animais/bichos/cavalo.png",43, 2,  48.9,  true, 20)
-    const cavalo2 = new Cavalo("Aristeu", "pura", "/animais/bichos/cavalo.png",43, 2,  48.9,  true, 25)
-    const cavalo3 = new Cavalo("Burreco", "pura", "/animais/bichos/cavalo.png",43, 2,  48.9,  true, 30)
-    const animaisNoLocalEstabulo = [cavalo1, cavalo2, cavalo3]
-    const estabulo = new AnimalHabbitat("Estábulo",1, animaisNoLocalEstabulo, "/animais/locais/estabulo.jpg" );
-    setHabbitats([galinheiro, estabulo])
-  },[habbitats])
+  
   function openModalAnimais(index: number){
     if (habbitats.at(index)?.getAnimaisNoLocal()) {
       let habbitat = habbitats.at(index); 
@@ -82,6 +88,7 @@ export default function Home() {
                         imagem={habbitat.getImagem()}
                         quantidadeAnimais={habbitat.getQuantidadeAnimais()}
                         setModal={() => openModalAnimais(index)}
+                        addAnimal={() => adicionarAnimal(index)}
                       />
             })
           }

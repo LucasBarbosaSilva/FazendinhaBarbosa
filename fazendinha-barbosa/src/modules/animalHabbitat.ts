@@ -20,6 +20,7 @@ export class AnimalHabbitat {
   }
 
   public getQuantidadeAnimais() : number {
+    this._quantidadeAnimais = this._animaisNoLocal.length;
     return this._quantidadeAnimais;
   }
   

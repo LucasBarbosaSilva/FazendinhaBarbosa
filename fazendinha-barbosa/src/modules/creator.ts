@@ -1,10 +1,10 @@
-import { Animal } from "./animal";
-import { Cavalo } from "./cavalo";
-import { Galinha } from "./galinha";
-import { Ovelha } from "./ovelha";
-import { Pato } from "./pato";
-import { Porco } from "./porco";
-import { Vaca } from "./vaca";
+import { Animal } from "./Animais/animal";
+import { Cavalo } from "./Animais/cavalo";
+import { Galinha } from "./Animais/galinha";
+import { Ovelha } from "./Animais/ovelha";
+import { Pato } from "./Animais/pato";
+import { Porco } from "./Animais/porco";
+import { Vaca } from "./Animais/vaca";
 
 export class Creator{
     public static comprarAnimal(codigoAnimal: number): Animal{

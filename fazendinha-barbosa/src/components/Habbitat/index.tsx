@@ -8,9 +8,10 @@ interface AnimalHabbitatProps{
   animaisNoLocal: Animal[];
   imagem: string;
   quantidadeAnimais: number;
-  setModal: () => void 
+  setModal: () => void;
+  addAnimal: () => void;
 }
-function Habbitat ({nome, animaisNoLocal, imagem, quantidadeAnimais, setModal}:AnimalHabbitatProps) {
+function Habbitat ({nome, animaisNoLocal, imagem, quantidadeAnimais, setModal, addAnimal}:AnimalHabbitatProps) {
   return(
     <>
       <div className={styles.container}>
@@ -21,12 +22,14 @@ function Habbitat ({nome, animaisNoLocal, imagem, quantidadeAnimais, setModal}:A
           })
         }
         <div className={styles.botao_plus}>
-          <Image
-            src={"/add.png"}
-            alt="imagem habbitat"
-            fill
-            style={{objectFit: 'cover'}}
-          />
+          <button type='button' onClick={addAnimal}>
+            <Image
+              src={"/add.png"}
+              alt="imagem habbitat"
+              fill
+              style={{objectFit: 'cover'}}
+            />
+          </button>
         </div> 
         <button type='button' onClick={setModal}>
           <img src="/menu.png" alt="Fechar modal"/>
