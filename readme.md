@@ -42,3 +42,8 @@ A ideia é aplicar os seguintes padrões de projeto:
 ![Untitled](readme/Desktop5.png)
 ### Diagrama UML:
 ![Untitled](readme/UML.png)
+
+### Para Executar o projeto:
+- Clone o repositório
+- Execute o comando 'yarn' para instalar as dependências
+- Execute o comando 'yarn dev' para rodar o projeto 
