@@ -47,7 +47,7 @@ export abstract class Plantacao{
     this._status = "Gradando";
   }
   
-  public abstract semear():void;
+  public abstract semear():string;
 
   //public cuidarPlantas():void{}
 

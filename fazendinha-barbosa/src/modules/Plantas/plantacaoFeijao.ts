@@ -8,7 +8,7 @@ export class PlantacaoFeijao extends Plantacao{
         super(cultura, imagem);
     }
 
-    public semear(): void{
-        //return "Semeando o Feijão...";
+    public semear(): string{
+        return "Semeando o Feijão...";
     }
 }

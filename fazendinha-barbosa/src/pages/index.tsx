@@ -10,13 +10,16 @@ import { useEffect, useState } from 'react'
 import { Cavalo } from '../modules/Animais/cavalo'
 import PlantacaoComponente from '../components/Plantacao'
 import { GerenciarAnimaisModal } from '../components/GerenciarAnimaisModal'
+import { GerenciarPlantasModal } from '../components/GerenciarPlantas'
+import { PlantacaoArroz } from '../modules/Plantas/plantacaoArroz'
 
 export default function Home() {
   const [habbitats, setHabbitats] = useState<AnimalHabbitat[]>([]);
   const [plantacoes, setplantacoes] = useState<Plantacao[]>([]);
-  const [isOpenModalGerenciar, setIsOpenModalGerenciar] = useState(false);
+  const [isOpenModalGerenciarAnimal, setIsOpenModalGerenciarAnimal] = useState(false);
+  const [isOpenModalGerenciarPlantacao, setIsOpenModalGerenciarPlantacao] = useState(false);
   const [habbitatModal, setHabbitatModal] = useState<AnimalHabbitat>();
-
+  const Plantacao = new PlantacaoArroz("arroz", "/plantas/alimentos/arroz.png");
   useEffect(() => {
     const galinha1 = new Galinha("Tia Cocó", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
     const galinha2 = new Galinha("Maria Chiquinha", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
@@ -30,21 +33,30 @@ export default function Home() {
     const estabulo = new AnimalHabbitat("Estábulo",1, animaisNoLocalEstabulo, "/animais/locais/estabulo.jpg" );
     setHabbitats([galinheiro, estabulo])
   },[habbitats])
-  function openModal(index: number){
+  function openModalAnimais(index: number){
     if (habbitats.at(index)?.getAnimaisNoLocal()) {
       let habbitat = habbitats.at(index); 
       setHabbitatModal(habbitat)
     }
-    setIsOpenModalGerenciar(!isOpenModalGerenciar)
+    setIsOpenModalGerenciarAnimal(true)
   }
 
-  function closeModal(){
-    setIsOpenModalGerenciar(false)
+  function openModalPlantacao(){
+    setIsOpenModalGerenciarPlantacao(true)
+  }
+
+  function closeModalAnimal(){
+    setIsOpenModalGerenciarAnimal(false)
+  }
+
+  function closeModalPlantacao(){
+    setIsOpenModalGerenciarPlantacao(false)
   }
   return (
     <div className={styles.container}>
       
-      {isOpenModalGerenciar && <GerenciarAnimaisModal habbitat={habbitatModal} setModal={() => closeModal()} />}
+      {isOpenModalGerenciarAnimal && <GerenciarAnimaisModal habbitat={habbitatModal} setModal={() => closeModalAnimal()} />}
+      {isOpenModalGerenciarPlantacao && <GerenciarPlantasModal plantacao={Plantacao} setModal={() => closeModalPlantacao()}/> }
       <Header/>
       
       <div className={styles.container_celeiro}>
@@ -57,14 +69,16 @@ export default function Home() {
                         animaisNoLocal={habbitat.getAnimaisNoLocal()}
                         imagem={habbitat.getImagem()}
                         quantidadeAnimais={habbitat.getQuantidadeAnimais()}
-                        setModal={() => openModal(index)}
+                        setModal={() => openModalAnimais(index)}
                       />
             })
           }
           
         </div>
         <div className={styles.container_plantas}>
-          <PlantacaoComponente/>
+          <PlantacaoComponente
+            setModal={() => openModalPlantacao()}
+          />
           <NovaPlantacao/>
         </div>
       </div>

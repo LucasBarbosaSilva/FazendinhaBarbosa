@@ -8,7 +8,7 @@ export class PlantacaoArroz extends Plantacao{
         super(cultura, imagem);
     }
 
-    public semear(): void{
-        //return "Semeando o Arroz...";
+    public semear(): string{
+        return "Semeando o Arroz...";
     }
 }

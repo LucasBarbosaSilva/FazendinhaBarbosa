@@ -22,11 +22,9 @@ function Habbitat ({nome, animaisNoLocal, imagem, quantidadeAnimais, setModal}:A
             style={{objectFit: 'cover'}}
           />
         </div> 
-        {/* <div className={styles.container_button}> */}
-          <button type='button' onClick={setModal}>
-            <img src="/menu.png" alt="Fechar modal"/>
-          </button>
-      {/* </div> */}
+        <button type='button' onClick={setModal}>
+          <img src="/menu.png" alt="Fechar modal"/>
+        </button>
       </div>
       
     </>

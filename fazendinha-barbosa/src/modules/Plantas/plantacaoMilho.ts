@@ -8,7 +8,7 @@ export class PlantacaoMilho extends Plantacao{
         super(cultura, imagem);
     }
 
-    public semear(): void{
-        //return "Semeando o Milho...";
+    public semear(): string{
+        return "Semeando o Milho...";
     }
 }
