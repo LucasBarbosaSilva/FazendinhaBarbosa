@@ -1,9 +1,15 @@
 import Image from 'next/image';
-import {AnimalHabbitatProps} from '../../modules/animalHabbitat';
+import { Animal } from '../../modules/Animais/animal';
 import { ImageAnimal } from '../ImageAnimal';
 import { ImageHabbitat } from '../ImageHabbitat';
 import styles from './styles.module.css'
-
+interface AnimalHabbitatProps{
+  nome: string;
+  animaisNoLocal: Animal[];
+  imagem: string;
+  quantidadeAnimais: number;
+  setModal: () => void 
+}
 function Habbitat ({nome, animaisNoLocal, imagem, quantidadeAnimais, setModal}:AnimalHabbitatProps) {
   return(
     <>

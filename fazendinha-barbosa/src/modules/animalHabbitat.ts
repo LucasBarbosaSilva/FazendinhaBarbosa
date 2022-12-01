@@ -1,12 +1,6 @@
 import { Animal, AnimalProps  } from "./Animais/animal";
 import { StrategyAnimais } from "./Ger_Animais/strategyAnimais";
-export interface AnimalHabbitatProps {
-  nome: string;
-  quantidadeAnimais: number;
-  animaisNoLocal: Animal[];
-  imagem: string;
-  setModal: () => void
-}
+
 export class AnimalHabbitat {
   private _nome: string;
   private _quantidadeAnimais: number;

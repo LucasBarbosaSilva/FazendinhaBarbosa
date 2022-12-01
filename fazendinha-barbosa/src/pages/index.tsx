@@ -12,6 +12,7 @@ import PlantacaoComponente from '../components/Plantacao'
 import { GerenciarAnimaisModal } from '../components/GerenciarAnimaisModal'
 import { GerenciarPlantasModal } from '../components/GerenciarPlantas'
 import { PlantacaoArroz } from '../modules/Plantas/plantacaoArroz'
+import { Creator } from '../modules/creator'
 
 export default function Home() {
   const [habbitats, setHabbitats] = useState<AnimalHabbitat[]>([]);
@@ -21,6 +22,16 @@ export default function Home() {
   const [habbitatModal, setHabbitatModal] = useState<AnimalHabbitat>();
   const [plantacaoModal, setPlantacaoModal] = useState<Plantacao>();
   const Plantacao = new PlantacaoArroz("arroz", "/plantas/alimentos/arroz.png");
+
+  function AdicionarAnimal(index: number) {
+    let animal = Creator.comprarAnimal(index);
+    let variavelPera = habbitats;
+
+    variavelPera.at(index)?.adicionarAnimal(animal);
+
+    setHabbitats(variavelPera);
+  }
+  
   useEffect(() => {
     const galinha1 = new Galinha("Tia Cocó", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
     const galinha2 = new Galinha("Maria Chiquinha", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
