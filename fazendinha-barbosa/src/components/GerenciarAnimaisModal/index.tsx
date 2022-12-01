@@ -6,6 +6,7 @@ import { DarCarinhoStrategy } from "../../modules/Ger_Animais/darCarinhoStrategy
 import { LimparStrategy } from "../../modules/Ger_Animais/limparStrategy";
 import { StrategyAnimais } from "../../modules/Ger_Animais/strategyAnimais";
 import { AnimalCard } from "../AnimalCard";
+import { Mensagem } from "../Mensagem";
 import { OptionGerenciar } from "../OptionGerenciar";
 import styles from "./styles.module.css";
 interface GerenciarAnimaisModalProps {
@@ -13,6 +14,9 @@ interface GerenciarAnimaisModalProps {
   habbitat?: AnimalHabbitat
 }
 export function GerenciarAnimaisModal({setModal, habbitat}:GerenciarAnimaisModalProps){
+  const [mensagem, setMensagem] = useState("")
+  const [isMensagemVisible, setIsMensagemVisible] = useState(false);
+
   const cuidarAnimais = [
     new AlimentarStrategy("/animais/animais/racao-para-animais.png"),
     new DarCarinhoStrategy("/animais/animais/coracao.png"),
@@ -20,7 +24,10 @@ export function GerenciarAnimaisModal({setModal, habbitat}:GerenciarAnimaisModal
   ]
 
   function handleStrategy(strategy: StrategyAnimais){
-    console.log(habbitat.gerenciarAnimais(strategy))
+    let texto = habbitat.gerenciarAnimais(strategy);
+    setMensagem(texto);
+    setIsMensagemVisible(true);
+    setTimeout(() => setIsMensagemVisible(false), 2000);
   }
 
   return(
@@ -44,6 +51,14 @@ export function GerenciarAnimaisModal({setModal, habbitat}:GerenciarAnimaisModal
             })
           }
         </div>
+        <div className={styles.container_mensagem}>
+          { isMensagemVisible &&  
+            <Mensagem
+              mensagem={mensagem}
+            />  
+          }
+        </div>
+        
         <div className={styles.container_footer}>
           {
             cuidarAnimais.map((strategy, index) => {

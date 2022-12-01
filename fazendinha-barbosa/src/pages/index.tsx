@@ -30,7 +30,7 @@ export default function Home() {
     const estabulo = new AnimalHabbitat("Estábulo",1, animaisNoLocalEstabulo, "/animais/locais/estabulo.jpg" );
     setHabbitats([galinheiro, estabulo])
   },[habbitats])
-  function handleModal(index: number){
+  function openModal(index: number){
     if (habbitats.at(index)?.getAnimaisNoLocal()) {
       let habbitat = habbitats.at(index); 
       setHabbitatModal(habbitat)
@@ -57,7 +57,7 @@ export default function Home() {
                         animaisNoLocal={habbitat.getAnimaisNoLocal()}
                         imagem={habbitat.getImagem()}
                         quantidadeAnimais={habbitat.getQuantidadeAnimais()}
-                        setModal={() => handleModal(index)}
+                        setModal={() => openModal(index)}
                       />
             })
           }
