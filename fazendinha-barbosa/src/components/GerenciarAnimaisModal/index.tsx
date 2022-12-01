@@ -15,9 +15,11 @@ export function GerenciarAnimaisModal({setModal}:GerenciarAnimaisModalProps){
   return(
     <div className={styles.overlay}>
       <div className={styles.container}>
-        <button type='button' onClick={setModal}>
-          <img src="/close.png" alt="Fechar modal"/>
-        </button>
+          <div className={styles.container_button}>
+            <button type='button' onClick={setModal}>
+              <img src="/close.png" alt="Fechar modal"/>
+            </button>
+          </div>
         <h1>Selecione o animal e escolha o que deseja fazer</h1>
         <div className={styles.container_list_animal}>
           <AnimalCard
