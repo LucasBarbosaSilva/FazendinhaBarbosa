@@ -1,4 +1,4 @@
-import { StrategyPlantas } from "./strategyPlantas";
+import { StrategyPlantas } from "../Ger_Plantas/strategyPlantas";
 
 export abstract class Plantacao{
   protected _cultura: string;
@@ -16,19 +16,19 @@ export abstract class Plantacao{
                   "Frutificando"|
                   "Maduro"|
                   "Doente";
-  private strategy: StrategyPlantas;
+  // private strategy: StrategyPlantas;
 
   constructor(
     cultura:string, 
     imagem:string,
-    strategy:StrategyPlantas
+    // strategy:StrategyPlantas
   ){
     this._cultura = cultura;
     this._status = "Vazio";
     this.plantar();
     this._imagem = imagem;
     this._plantado = true;
-    this.strategy = strategy
+    // this.strategy = strategy
   }
   
   public plantar():void{
@@ -51,11 +51,11 @@ export abstract class Plantacao{
 
   //public cuidarPlantas():void{}
 
-  public setStrategy(strategy:StrategyPlantas): void{
-    this.strategy = strategy;
-  }
+  // public setStrategy(strategy:StrategyPlantas): void{
+  //   this.strategy = strategy;
+  // }
 
-  public cuidarPlantas(): void{
-    this.strategy.cuidar;
+  public cuidarPlantas(strategy:StrategyPlantas): string{
+    return strategy.cuidar();
   }
 }

@@ -1,7 +1,7 @@
 import { StrategyPlantas } from "./strategyPlantas";
 
 export class CombaterPragasStrategy implements StrategyPlantas{
-    public cuidar(): void{
-        //return "Combatendo as pragas...";
+    public cuidar(): string{
+        return "Combatendo as pragas...";
     }
 }

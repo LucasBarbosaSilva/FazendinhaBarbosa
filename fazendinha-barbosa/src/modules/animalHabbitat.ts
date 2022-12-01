@@ -1,4 +1,5 @@
-import { Animal, AnimalProps  } from "./animal";
+import { Animal, AnimalProps  } from "./Animais/animal";
+import { StrategyAnimais } from "./Ger_Animais/strategyAnimais";
 export interface AnimalHabbitatProps {
   nome: string;
   quantidadeAnimais: number;
@@ -45,6 +46,10 @@ export class AnimalHabbitat {
   public removerAnimal(index:number):boolean{
     this._animaisNoLocal.splice(index, 1)
     return true;
+  }
+
+  public gerenciarAnimais(strategy: StrategyAnimais):string{
+    return strategy.gerenciar();
   }
 
 }

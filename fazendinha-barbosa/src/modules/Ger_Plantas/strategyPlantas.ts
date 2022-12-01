@@ -1,3 +1,3 @@
 export interface StrategyPlantas{
-    cuidar(): void;
+    cuidar(): string;
 }

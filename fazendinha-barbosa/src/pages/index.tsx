@@ -1,13 +1,13 @@
 import { Habbitat } from '../components/Habbitat'
 import { Header } from '../components/Header/Header'
 import { NovaPlantacao} from '../components/NovaPlantacao'
-import { Animal, AnimalProps } from '../modules/animal'
-import {Galinha} from '../modules/galinha'
+import { Animal, AnimalProps } from '../modules/Animais/animal'
+import {Galinha} from '../modules/Animais/galinha'
 import { AnimalHabbitat } from '../modules/animalHabbitat'
-import { Plantacao } from '../modules/plantacao'
+import { Plantacao } from '../modules/Plantas/plantacao'
 import styles from '../styles/pages/Home.module.css'
 import { useEffect, useState } from 'react'
-import { Cavalo } from '../modules/cavalo'
+import { Cavalo } from '../modules/Animais/cavalo'
 import PlantacaoComponente from '../components/Plantacao'
 import { GerenciarAnimaisModal } from '../components/GerenciarAnimaisModal'
 
@@ -15,6 +15,8 @@ export default function Home() {
   const [habbitats, setHabbitats] = useState<AnimalHabbitat[]>([]);
   const [plantacoes, setplantacoes] = useState<Plantacao[]>([]);
   const [isOpenModalGerenciar, setIsOpenModalGerenciar] = useState(false);
+  const [habbitatModal, setHabbitatModal] = useState<AnimalHabbitat>();
+
   useEffect(() => {
     const galinha1 = new Galinha("Tia Cocó", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
     const galinha2 = new Galinha("Maria Chiquinha", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
@@ -28,13 +30,21 @@ export default function Home() {
     const estabulo = new AnimalHabbitat("Estábulo",1, animaisNoLocalEstabulo, "/animais/locais/estabulo.jpg" );
     setHabbitats([galinheiro, estabulo])
   },[habbitats])
-  function handleModal(){
+  function handleModal(index: number){
+    if (habbitats.at(index)?.getAnimaisNoLocal()) {
+      let habbitat = habbitats.at(index); 
+      setHabbitatModal(habbitat)
+    }
     setIsOpenModalGerenciar(!isOpenModalGerenciar)
+  }
+
+  function closeModal(){
+    setIsOpenModalGerenciar(false)
   }
   return (
     <div className={styles.container}>
       
-      {isOpenModalGerenciar && <GerenciarAnimaisModal setModal={() => handleModal()} />}
+      {isOpenModalGerenciar && <GerenciarAnimaisModal habbitat={habbitatModal} setModal={() => closeModal()} />}
       <Header/>
       
       <div className={styles.container_celeiro}>
@@ -47,7 +57,7 @@ export default function Home() {
                         animaisNoLocal={habbitat.getAnimaisNoLocal()}
                         imagem={habbitat.getImagem()}
                         quantidadeAnimais={habbitat.getQuantidadeAnimais()}
-                        setModal={handleModal}
+                        setModal={() => handleModal(index)}
                       />
             })
           }

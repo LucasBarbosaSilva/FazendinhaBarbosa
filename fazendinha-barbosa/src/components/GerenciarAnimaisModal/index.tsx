@@ -1,17 +1,28 @@
 import { useState } from "react";
+import { Animal } from "../../modules/Animais/animal";
+import { AnimalHabbitat } from "../../modules/animalHabbitat";
+import { AlimentarStrategy } from "../../modules/Ger_Animais/alimentarStrategy";
+import { DarCarinhoStrategy } from "../../modules/Ger_Animais/darCarinhoStrategy";
+import { LimparStrategy } from "../../modules/Ger_Animais/limparStrategy";
+import { StrategyAnimais } from "../../modules/Ger_Animais/strategyAnimais";
 import { AnimalCard } from "../AnimalCard";
 import { OptionGerenciar } from "../OptionGerenciar";
 import styles from "./styles.module.css";
 interface GerenciarAnimaisModalProps {
-  setModal: () => void
+  setModal: () => void,
+  habbitat?: AnimalHabbitat
 }
-export function GerenciarAnimaisModal({setModal}:GerenciarAnimaisModalProps){
+export function GerenciarAnimaisModal({setModal, habbitat}:GerenciarAnimaisModalProps){
   const cuidarAnimais = [
-    "/animais/animais/acougueiro.png",
-    "/animais/animais/coracao.png",
-    "/animais/animais/ferramentas-de-limpeza.png",
-    "/animais/animais/racao-para-animais.png"
+    new AlimentarStrategy("/animais/animais/racao-para-animais.png"),
+    new DarCarinhoStrategy("/animais/animais/coracao.png"),
+    new LimparStrategy("/animais/animais/ferramentas-de-limpeza.png")
   ]
+
+  function handleStrategy(strategy: StrategyAnimais){
+    console.log(habbitat.gerenciarAnimais(strategy))
+  }
+
   return(
     <div className={styles.overlay}>
       <div className={styles.container}>
@@ -22,20 +33,27 @@ export function GerenciarAnimaisModal({setModal}:GerenciarAnimaisModalProps){
           </div>
         <h1>Selecione o animal e escolha o que deseja fazer</h1>
         <div className={styles.container_list_animal}>
-          <AnimalCard
-            imagem="/animais/bichos/galinha.png"
-          />
-          <AnimalCard
-            imagem="/animais/bichos/galinha.png"
-          />
+          {
+            habbitat.getAnimaisNoLocal().map((animal, index) => {
+              return (
+                <AnimalCard
+                  key={index}
+                  imagem={animal.obtemImagem()}
+                />
+              );
+            })
+          }
         </div>
         <div className={styles.container_footer}>
           {
-            cuidarAnimais.map((path, index) => {
-              return <OptionGerenciar
-                  imagem={path}
-                  key={index}
-                />;
+            cuidarAnimais.map((strategy, index) => {
+              return (
+                  <button key={index} onClick={() => handleStrategy(strategy)}>
+                    <OptionGerenciar
+                      imagem={strategy.getImagem()}
+                    />
+                  </button>
+                );
             })
           }
         </div>
