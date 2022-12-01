@@ -17,4 +17,4 @@ function Plantacao () {
   );
 }
 
-export {Plantacao};
+export default Plantacao;

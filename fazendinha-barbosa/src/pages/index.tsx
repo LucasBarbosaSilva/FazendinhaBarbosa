@@ -4,14 +4,15 @@ import { NovaPlantacao} from '../components/NovaPlantacao'
 import { Animal, AnimalProps } from '../modules/animal'
 import {Galinha} from '../modules/galinha'
 import { AnimalHabbitat } from '../modules/animalHabbitat'
+import { Plantacao } from '../modules/plantacao'
 import styles from '../styles/pages/Home.module.css'
 import { useEffect, useState } from 'react'
 import { Cavalo } from '../modules/cavalo'
-import { Plantacao } from '../components/Plantacao'
+import PlantacaoComponente from '../components/Plantacao'
 
 export default function Home() {
   const [habbitats, setHabbitats] = useState<AnimalHabbitat[]>([]);
-  // const [plantacoes, setplantacoes] = useState<Plantacao[]>([]);
+  const [plantacoes, setplantacoes] = useState<Plantacao[]>([]);
   
   useEffect(() => {
     const galinha1 = new Galinha("Tia Cocó", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
@@ -46,7 +47,7 @@ export default function Home() {
           
         </div>
         <div className={styles.container_plantas}>
-          <Plantacao/>
+          <PlantacaoComponente/>
           <NovaPlantacao/>
         </div>
       </div>
