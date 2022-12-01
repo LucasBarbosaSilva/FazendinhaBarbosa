@@ -28,12 +28,13 @@ export default function Home() {
                                                                 curralVacas,
                                                                 chiqueiro,
                                                                 estabulo]);
-  const [plantacoes, setplantacoes] = useState<Plantacao[]>([]);
+  const plantacaoArroz = new PlantacaoArroz("arroz", "/plantas/alimentos/arroz.png");
+  const [plantacoes, setplantacoes] = useState<Plantacao[]>([plantacaoArroz]);
+
   const [isOpenModalGerenciarAnimal, setIsOpenModalGerenciarAnimal] = useState(false);
   const [isOpenModalGerenciarPlantacao, setIsOpenModalGerenciarPlantacao] = useState(false);
   const [habbitatModal, setHabbitatModal] = useState<AnimalHabbitat>();
   const [plantacaoModal, setPlantacaoModal] = useState<Plantacao>();
-  const Plantacao = new PlantacaoArroz("arroz", "/plantas/alimentos/arroz.png");
 
   function adicionarAnimal(index: number) {
     let animal = Creator.comprarAnimal(index);
@@ -70,11 +71,19 @@ export default function Home() {
   function closeModalPlantacao(){
     setIsOpenModalGerenciarPlantacao(false)
   }
+
+  function addPlantacao(){
+    const plantacaoNova = new PlantacaoArroz("arroz", "/plantas/alimentos/arroz.png");
+    setplantacoes([
+      ...plantacoes,
+      plantacaoNova
+    ])
+  }
   return (
     <div className={styles.container}>
       
       {isOpenModalGerenciarAnimal && <GerenciarAnimaisModal habbitat={habbitatModal} setModal={() => closeModalAnimal()} />}
-      {isOpenModalGerenciarPlantacao && <GerenciarPlantasModal plantacao={Plantacao} setModal={() => closeModalPlantacao()}/> }
+      {isOpenModalGerenciarPlantacao && <GerenciarPlantasModal plantacao={plantacaoArroz} setModal={() => closeModalPlantacao()}/> }
       <Header/>
       
       <div className={styles.container_celeiro}>
@@ -95,10 +104,18 @@ export default function Home() {
           
         </div>
         <div className={styles.container_plantas}>
-          <PlantacaoComponente
-            setModal={() => openModalPlantacao()}
+          {
+            plantacoes.map((plantacao, index) => {
+              return(<PlantacaoComponente
+                        setModal={() => openModalPlantacao()}
+                        key={index}
+                      />);
+            })
+          }
+          
+          <NovaPlantacao
+            addPlantacao={() => addPlantacao()}
           />
-          <NovaPlantacao/>
         </div>
       </div>
     </div>
