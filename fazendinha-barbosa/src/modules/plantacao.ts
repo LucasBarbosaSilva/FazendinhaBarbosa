@@ -1,3 +1,5 @@
+import { StrategyPlantas } from "./strategyPlantas";
+
 export abstract class Plantacao{
   protected _cultura: string;
   protected _imagem: string;
@@ -14,16 +16,19 @@ export abstract class Plantacao{
                   "Frutificando"|
                   "Maduro"|
                   "Doente";
+  private strategy: StrategyPlantas;
 
   constructor(
     cultura:string, 
     imagem:string,
+    strategy:StrategyPlantas
   ){
     this._cultura = cultura;
     this._status = "Vazio";
     this.plantar();
     this._imagem = imagem;
     this._plantado = true;
+    this.strategy = strategy
   }
   
   public plantar():void{
@@ -44,7 +49,13 @@ export abstract class Plantacao{
   
   public abstract semear():void;
 
-  public cuidarPlantas():void{
+  //public cuidarPlantas():void{}
 
+  public setStrategy(strategy:StrategyPlantas): void{
+    this.strategy = strategy;
+  }
+
+  public cuidarPlantas(): void{
+    this.strategy.cuidar;
   }
 }
