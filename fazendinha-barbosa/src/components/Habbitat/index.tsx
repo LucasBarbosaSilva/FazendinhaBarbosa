@@ -4,7 +4,7 @@ import { ImageAnimal } from '../ImageAnimal';
 import { ImageHabbitat } from '../ImageHabbitat';
 import styles from './styles.module.css'
 
-function Habbitat ({nome, animaisNoLocal, imagem, quantidadeAnimais}:AnimalHabbitatProps) {
+function Habbitat ({nome, animaisNoLocal, imagem, quantidadeAnimais, setModal}:AnimalHabbitatProps) {
   return(
     <div className={styles.container}>
       <ImageHabbitat imagem={imagem} />
@@ -21,6 +21,9 @@ function Habbitat ({nome, animaisNoLocal, imagem, quantidadeAnimais}:AnimalHabbi
           style={{objectFit: 'cover'}}
         />
       </div>
+      <button type='button' onClick={setModal}>
+        <img src="/menu.png" alt="Fechar modal"/>
+      </button>
     </div>
   );
 }

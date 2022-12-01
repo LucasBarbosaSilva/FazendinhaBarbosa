@@ -4,6 +4,7 @@ export interface AnimalHabbitatProps {
   quantidadeAnimais: number;
   animaisNoLocal: Animal[];
   imagem: string;
+  setModal: () => void
 }
 export class AnimalHabbitat {
   private _nome: string;
