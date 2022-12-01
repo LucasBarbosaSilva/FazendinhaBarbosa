@@ -1,10 +1,9 @@
 import { Plantacao } from "./plantacao";
 
 export class PlantacaoMilho extends Plantacao{
-    constructor(
-        cultura: string,
-        imagem: string
-    ){
+    constructor(){
+        let cultura= "Milho";
+        let imagem= "/plantas/alimentos/milho.jpg"; 
         super(cultura, imagem);
     }
 

@@ -6,7 +6,7 @@ import { Pato } from "./Animais/pato";
 import { Porco } from "./Animais/porco";
 import { Vaca } from "./Animais/vaca";
 
-export class Creator{
+export class CreatorAnimal{
     public static comprarAnimal(codigoAnimal: number): Animal{
         switch(codigoAnimal){
             case 0:

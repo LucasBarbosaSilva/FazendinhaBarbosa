@@ -41,7 +41,12 @@ export function GerenciarPlantasModal({setModal, plantacao}:GerenciarPlantasModa
         <h1>Escolha o que deseja fazer</h1>
         <div className={styles.container_list_animal}>
           {
-            <PlantacaoComponente/>
+            <PlantacaoComponente
+              imagem={plantacao?.getImagem() ? 
+                        plantacao?.getImagem() : 
+                        ""}
+              setModal={() => {}}
+            />
           }
         </div>
         <div className={styles.container_mensagem}>

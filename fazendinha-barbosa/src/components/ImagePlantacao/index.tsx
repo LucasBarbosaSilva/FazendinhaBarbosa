@@ -8,7 +8,7 @@ function ImagePlantacao ({imagem}:ImageHabbitatProps) {
     <div className={styles.imagem_plantacao}>
         <Image
           src={imagem}
-          alt="imagem habbitat"
+          alt="imagem plantação"
           fill
           style={{objectFit: 'cover'}}
         />

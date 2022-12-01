@@ -12,7 +12,12 @@ import PlantacaoComponente from '../components/Plantacao'
 import { GerenciarAnimaisModal } from '../components/GerenciarAnimaisModal'
 import { GerenciarPlantasModal } from '../components/GerenciarPlantas'
 import { PlantacaoArroz } from '../modules/Plantas/plantacaoArroz'
-import { Creator } from '../modules/creator'
+import { CreatorAnimal } from '../modules/creatorAnimais'
+import { CreatorPlantas } from '../modules/creatorPlantas'
+import { randomInt } from 'crypto'
+import { Mensagem } from '../components/Mensagem'
+import { setMaxIdleHTTPParsers } from 'http'
+import { PlantacaoMilho } from '../modules/Plantas/plantacaoMilho'
 
 export default function Home() {
   const galinheiro = new AnimalHabbitat("Galinheiro",0, [], "/animais/locais/galinheiro.jpg" );
@@ -28,16 +33,19 @@ export default function Home() {
                                                                 curralVacas,
                                                                 chiqueiro,
                                                                 estabulo]);
-  const plantacaoArroz = new PlantacaoArroz("arroz", "/plantas/alimentos/arroz.png");
-  const [plantacoes, setplantacoes] = useState<Plantacao[]>([plantacaoArroz]);
+  const plantacaoArroz = new PlantacaoArroz();
+  const [plantacoes, setPlantacoes] = useState<Plantacao[]>([plantacaoArroz]);
 
   const [isOpenModalGerenciarAnimal, setIsOpenModalGerenciarAnimal] = useState(false);
   const [isOpenModalGerenciarPlantacao, setIsOpenModalGerenciarPlantacao] = useState(false);
   const [habbitatModal, setHabbitatModal] = useState<AnimalHabbitat>();
-  const [plantacaoModal, setPlantacaoModal] = useState<Plantacao>();
-
+  const [plantacaoModal, setPlantacaoModal] = useState<Plantacao>(new PlantacaoMilho());
+  const [mensagem, setMensagem] = useState("Vazio");
+  const [mensagens, setMensagens] = useState([""]);
+  const [isMensagemVisible, setIsMensagemVisible] = useState(false);
+  
   function adicionarAnimal(index: number) {
-    let animal = Creator.comprarAnimal(index);
+    let animal = CreatorAnimal.comprarAnimal(index);
     const habbitatNovos = habbitats.map((habbitat, i)=> {
       if (i === index){
         console.log("passou")
@@ -50,8 +58,7 @@ export default function Home() {
     console.log(habbitatNovos.at(index)?.getQuantidadeAnimais())
     setHabbitats(habbitatNovos);
   }
-  
-  
+
   function openModalAnimais(index: number){
     if (habbitats.at(index)?.getAnimaisNoLocal()) {
       let habbitat = habbitats.at(index); 
@@ -60,7 +67,8 @@ export default function Home() {
     setIsOpenModalGerenciarAnimal(true)
   }
 
-  function openModalPlantacao(){
+  function openModalPlantacao(index: number){
+    setPlantacaoModal(plantacoes[index])
     setIsOpenModalGerenciarPlantacao(true)
   }
 
@@ -71,19 +79,38 @@ export default function Home() {
   function closeModalPlantacao(){
     setIsOpenModalGerenciarPlantacao(false)
   }
-
-  function addPlantacao(){
-    const plantacaoNova = new PlantacaoArroz("arroz", "/plantas/alimentos/arroz.png");
-    setplantacoes([
+  function sleep(ms:number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  
+  async function setarMensagem(mens:string){
+    
+  }
+  async function addPlantacao(){
+    let i = Math.floor(Math.random()*5);
+    const plantacaoNova = CreatorPlantas.semearPlantacao(i);
+    setIsMensagemVisible(true)
+    let mens = plantacaoNova.plantar();
+    setMensagem(mens[0]); 
+    await sleep(1000);
+    setMensagem(mens[1]); 
+    await sleep(1000);
+    setMensagem(mens[2]); 
+    await sleep(1000);
+    setMensagem(mens[3]); 
+    await sleep(1000);
+    setIsMensagemVisible(false)
+    setPlantacoes([
       ...plantacoes,
       plantacaoNova
     ])
+
   }
   return (
     <div className={styles.container}>
       
       {isOpenModalGerenciarAnimal && <GerenciarAnimaisModal habbitat={habbitatModal} setModal={() => closeModalAnimal()} />}
-      {isOpenModalGerenciarPlantacao && <GerenciarPlantasModal plantacao={plantacaoArroz} setModal={() => closeModalPlantacao()}/> }
+      {isOpenModalGerenciarPlantacao && <GerenciarPlantasModal plantacao={plantacaoModal} setModal={() => closeModalPlantacao()}/> }
       <Header/>
       
       <div className={styles.container_celeiro}>
@@ -101,18 +128,25 @@ export default function Home() {
                       />
             })
           }
-          
         </div>
         <div className={styles.container_plantas}>
           {
             plantacoes.map((plantacao, index) => {
               return(<PlantacaoComponente
-                        setModal={() => openModalPlantacao()}
+                        imagem={plantacao.getImagem()}
+                        setModal={() => openModalPlantacao(index)}
                         key={index}
                       />);
             })
           }
-          
+          {
+            isMensagemVisible &&
+            <div className={styles.container_mensagem}>
+              <Mensagem
+                mensagem={mensagem}
+              />  
+            </div>          
+          }
           <NovaPlantacao
             addPlantacao={() => addPlantacao()}
           />
