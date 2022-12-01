@@ -9,10 +9,20 @@ import styles from '../styles/pages/Home.module.css'
 import { useEffect, useState } from 'react'
 import { Cavalo } from '../modules/cavalo'
 import PlantacaoComponente from '../components/Plantacao'
+import { Creator } from '../modules/creator'
 
 export default function Home() {
   const [habbitats, setHabbitats] = useState<AnimalHabbitat[]>([]);
   const [plantacoes, setplantacoes] = useState<Plantacao[]>([]);
+
+  function AdicionarAnimal(index: number) {
+    let animal = Creator.comprarAnimal(index);
+    let variavelPera = habbitats;
+
+    variavelPera.at(index)?.adicionarAnimal(animal);
+
+    setHabbitats(variavelPera);
+  }
   
   useEffect(() => {
     const galinha1 = new Galinha("Tia Cocó", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)

@@ -1,10 +1,5 @@
 import { Animal, AnimalProps  } from "./animal";
-export interface AnimalHabbitatProps {
-  nome: string;
-  quantidadeAnimais: number;
-  animaisNoLocal: Animal[];
-  imagem: string;
-}
+
 export class AnimalHabbitat {
   private _nome: string;
   private _quantidadeAnimais: number;
