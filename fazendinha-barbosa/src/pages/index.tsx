@@ -9,11 +9,12 @@ import styles from '../styles/pages/Home.module.css'
 import { useEffect, useState } from 'react'
 import { Cavalo } from '../modules/cavalo'
 import PlantacaoComponente from '../components/Plantacao'
+import { GerenciarAnimaisModal } from '../components/GerenciarAnimaisModal'
 
 export default function Home() {
   const [habbitats, setHabbitats] = useState<AnimalHabbitat[]>([]);
   const [plantacoes, setplantacoes] = useState<Plantacao[]>([]);
-  
+  const [isOpenModalGerenciar, setIsOpenModalGerenciar] = useState(false);
   useEffect(() => {
     const galinha1 = new Galinha("Tia Cocó", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
     const galinha2 = new Galinha("Maria Chiquinha", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
@@ -27,10 +28,15 @@ export default function Home() {
     const estabulo = new AnimalHabbitat("Estábulo",1, animaisNoLocalEstabulo, "/animais/locais/estabulo.jpg" );
     setHabbitats([galinheiro, estabulo])
   },[habbitats])
-  
+  function handleModal(){
+    setIsOpenModalGerenciar(!isOpenModalGerenciar)
+  }
   return (
     <div className={styles.container}>
+      
+      {isOpenModalGerenciar && <GerenciarAnimaisModal setModal={() => handleModal()} />}
       <Header/>
+      
       <div className={styles.container_celeiro}>
         <div className={styles.container_animais}>
           {
@@ -41,6 +47,7 @@ export default function Home() {
                         animaisNoLocal={habbitat.getAnimaisNoLocal()}
                         imagem={habbitat.getImagem()}
                         quantidadeAnimais={habbitat.getQuantidadeAnimais()}
+                        setModal={handleModal}
                       />
             })
           }

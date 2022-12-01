@@ -1,0 +1,9 @@
+.imagem_opcao{
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 0.75rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #DCDCDC;
+}

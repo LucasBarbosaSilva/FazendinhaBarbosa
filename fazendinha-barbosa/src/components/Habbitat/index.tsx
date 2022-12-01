@@ -4,24 +4,32 @@ import { ImageAnimal } from '../ImageAnimal';
 import { ImageHabbitat } from '../ImageHabbitat';
 import styles from './styles.module.css'
 
-function Habbitat ({nome, animaisNoLocal, imagem, quantidadeAnimais}:AnimalHabbitatProps) {
+function Habbitat ({nome, animaisNoLocal, imagem, quantidadeAnimais, setModal}:AnimalHabbitatProps) {
   return(
-    <div className={styles.container}>
-      <ImageHabbitat imagem={imagem} />
-      {
-        animaisNoLocal.map((animal,index) => {
-          return <ImageAnimal key={index} imagem={animal.obtemImagem()}/>
-        })
-      }
-      <div className={styles.botao_plus}>
-        <Image
-          src={"/add.png"}
-          alt="imagem habbitat"
-          fill
-          style={{objectFit: 'cover'}}
-        />
+    <>
+      <div className={styles.container}>
+        <ImageHabbitat imagem={imagem} />
+        {
+          animaisNoLocal.map((animal,index) => {
+            return <ImageAnimal key={index} imagem={animal.obtemImagem()}/>
+          })
+        }
+        <div className={styles.botao_plus}>
+          <Image
+            src={"/add.png"}
+            alt="imagem habbitat"
+            fill
+            style={{objectFit: 'cover'}}
+          />
+        </div> 
+        {/* <div className={styles.container_button}> */}
+          <button type='button' onClick={setModal}>
+            <img src="/menu.png" alt="Fechar modal"/>
+          </button>
+      {/* </div> */}
       </div>
-    </div>
+      
+    </>
   );
 }
 
