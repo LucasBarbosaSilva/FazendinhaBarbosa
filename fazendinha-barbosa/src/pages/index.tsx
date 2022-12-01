@@ -19,6 +19,7 @@ export default function Home() {
   const [isOpenModalGerenciarAnimal, setIsOpenModalGerenciarAnimal] = useState(false);
   const [isOpenModalGerenciarPlantacao, setIsOpenModalGerenciarPlantacao] = useState(false);
   const [habbitatModal, setHabbitatModal] = useState<AnimalHabbitat>();
+  const [plantacaoModal, setPlantacaoModal] = useState<Plantacao>();
   const Plantacao = new PlantacaoArroz("arroz", "/plantas/alimentos/arroz.png");
   useEffect(() => {
     const galinha1 = new Galinha("Tia Cocó", "pura", "/animais/bichos/galinha.png",43, 2,  48.9,  true)
