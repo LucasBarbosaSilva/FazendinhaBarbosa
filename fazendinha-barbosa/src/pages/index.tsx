@@ -25,7 +25,7 @@ export default function Home() {
   const lagoPatos = new AnimalHabbitat("Lago dos Patos",0, [], "/animais/locais/patos.jpg" );
   const curralVacas = new AnimalHabbitat("Curral de Vacas",0, [], "/animais/locais/vacas.jpg" );
   const chiqueiro = new AnimalHabbitat("Chiquiero",0, [], "/animais/locais/porcos.jpg" );
-  const estabulo = new AnimalHabbitat("Estábulo",0, [], "/animais/locais/estabulo.jpg" );
+  const estabulo = new AnimalHabbitat("Estábulo",0, [], "/animais/locais/cavalos.jpg" );
   const [habbitats, setHabbitats] = useState<AnimalHabbitat[]>([
                                                                 galinheiro, 
                                                                 curralOvelhas, 

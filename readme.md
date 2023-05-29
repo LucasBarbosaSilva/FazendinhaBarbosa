@@ -30,9 +30,8 @@ Será possível também desfazer ações e visualizar um histórico das que já 
 A ideia é aplicar os seguintes padrões de projeto:
 
 - Template Method: usado para as etapas do processo de plantação.
-- Factory Method: responsável por criar novos animais.
+- Factory Method: responsável por criar novos animais e plantas.
 - Strategy pattern: qual método vou utilizar para cuidar das plantas ou cuidar dos animais.
-- Command e Memento: ações de desfazer e visualizar o histórico.
 
 # Atualização - 22/11
 ### Aprimoramentos no desing do projeto:
@@ -45,5 +44,6 @@ A ideia é aplicar os seguintes padrões de projeto:
 
 ### Para Executar o projeto:
 - Clone o repositório
+- Navegue até a pasta /fazendinha-barbosa
 - Execute o comando 'yarn' para instalar as dependências
 - Execute o comando 'yarn dev' para rodar o projeto 
